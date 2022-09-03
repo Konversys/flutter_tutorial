@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_tutorial/custom_icons.dart';
 
 void main() => runApp(const FlutterTutorialApp());
@@ -18,9 +17,12 @@ class FlutterTutorialApp extends StatelessWidget {
           backgroundColor: Colors.grey,
         ),
         body: Container(
+            decoration: const BoxDecoration(
+                gradient: RadialGradient(
+                    colors: [Colors.white, Colors.blue], radius: 1.4)),
             child: Container(
-              padding: EdgeInsets.all(28),
-              margin: EdgeInsets.all(48),
+              padding: const EdgeInsets.all(28),
+              margin: const EdgeInsets.all(48),
               alignment: Alignment.center,
               transform: Matrix4.rotationZ(0.05),
               decoration: BoxDecoration(
@@ -29,7 +31,7 @@ class FlutterTutorialApp extends StatelessWidget {
                   shape: BoxShape.rectangle,
                   border: Border.all(
                       width: 5, color: Colors.red, style: BorderStyle.solid),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                         color: Colors.black26,
                         spreadRadius: 5,
@@ -46,13 +48,7 @@ class FlutterTutorialApp extends StatelessWidget {
                   color: Colors.red,
                 ),
               ),
-            ),
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/face1.jpg'),
-                    fit: BoxFit.fill),
-                gradient: RadialGradient(
-                    colors: [Colors.white, Colors.blue], radius: 1.4))),
+            )),
         floatingActionButton: const FloatingActionButton(
           onPressed: null,
           backgroundColor: Colors.grey,
