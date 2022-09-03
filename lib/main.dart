@@ -1,5 +1,6 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorial/custom_icons.dart';
 
 void main() => runApp(const FlutterTutorialApp());
 
@@ -12,55 +13,52 @@ class FlutterTutorialApp extends StatelessWidget {
       title: "Flutter",
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("Flutter"),
-          centerTitle: true,
-          backgroundColor: Colors.grey,
+          title: const Text("Flutter", style: TextStyle(color: Colors.black)),
+          backgroundColor: Colors.yellow,
         ),
-        body: Container(
-            decoration: const BoxDecoration(
-                gradient: RadialGradient(
-                    colors: [Colors.white, Colors.blue], radius: 1.4)),
-            child: Container(
-              padding: const EdgeInsets.all(28),
-              margin: const EdgeInsets.all(48),
-              alignment: Alignment.center,
-              transform: Matrix4.rotationZ(0.05),
-              decoration: BoxDecoration(
-                  color: Colors.yellow,
-                  borderRadius: BorderRadius.circular(30),
-                  shape: BoxShape.rectangle,
-                  border: Border.all(
-                      width: 5, color: Colors.red, style: BorderStyle.solid),
-                  boxShadow: const [
-                    BoxShadow(
-                        color: Colors.black26,
-                        spreadRadius: 5,
-                        blurRadius: 10,
-                        offset: Offset(3, 3))
-                  ]),
-              width: 200,
-              height: 200,
-              child: IconButton(
-                onPressed: () => print("Button pressed"),
-                icon: const Icon(
-                  CustomIcons.lighthouse,
-                  size: 50.0,
-                  color: Colors.red,
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  color: Colors.blue,
+                  padding: EdgeInsets.all(30),
+                  child: Text("1"),
                 ),
-              ),
-            )),
+                Container(
+                  color: Colors.yellow,
+                  padding: EdgeInsets.all(40),
+                  child: Text("2"),
+                ),
+                Container(
+                  color: Colors.pink,
+                  padding: EdgeInsets.all(50),
+                  child: Text("3"),
+                ),
+              ],
+            ),
+          ],
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: const FloatingActionButton(
           onPressed: null,
-          backgroundColor: Colors.grey,
-          child: Icon(Icons.add),
+          backgroundColor: Colors.blue,
+          child: Icon(Icons.pin_drop_outlined),
         ),
         bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.blue,
+          fixedColor: Colors.white,
+          unselectedItemColor: Colors.white70,
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.ac_unit), label: "F"),
             BottomNavigationBarItem(
-                icon: Icon(CustomIcons.lighthouse),
-                label: "C",
-                tooltip: "Tooltip")
+                icon: Icon(Icons.map_outlined), label: "Map"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person_pin_rounded), label: "Friends"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.message_outlined), label: "Messages"),
           ],
         ),
       ),
