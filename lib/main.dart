@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_tutorial/custom_icons.dart';
 
 void main() => runApp(const FlutterTutorialApp());
 
@@ -15,23 +17,19 @@ class FlutterTutorialApp extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.grey,
         ),
-        body: RichText(
-          text: const TextSpan(
-            style: TextStyle(
-                fontFamily: "Montserrat",
-                fontSize: 20.0,
-                fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.bold,
-                decoration: TextDecoration.none,
-                letterSpacing: 3.0,
-                color: Colors.blue),
-            children: [
-              TextSpan(text: "Hello "),
-              TextSpan(text: "World",
-              style: TextStyle(color: Colors.red)),
-              TextSpan(text: "!"),
-            ]
-          )
+        body: Container(
+          padding: EdgeInsets.all(28),
+          margin: EdgeInsets.all(48),
+          color: Colors.blue,
+          alignment: Alignment.center,
+          child: IconButton(
+            onPressed: () => print("Button pressed"),
+            icon: const Icon(
+              CustomIcons.lighthouse,
+              size: 50.0,
+              color: Colors.red,
+            ),
+          ),
         ),
         floatingActionButton: const FloatingActionButton(
           onPressed: null,
@@ -42,7 +40,7 @@ class FlutterTutorialApp extends StatelessWidget {
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.ac_unit), label: "F"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.account_balance_sharp), label: "C")
+                icon: Icon(CustomIcons.lighthouse), label: "C", tooltip: "Tooltip")
           ],
         ),
       ),
