@@ -16,10 +16,90 @@ class FlutterTutorialApp extends StatelessWidget {
           title: const Text("Flutter", style: TextStyle(color: Colors.black)),
           backgroundColor: Colors.yellow,
         ),
-        body: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
+            Row(
+              children: [
+                SizedBox(
+                  width: 100,
+                  height: 50,
+                  child: Container(color: Colors.blue),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Center(
+                    child: Container(
+                  color: Colors.blue,
+                  width: 150,
+                  height: 150,
+                  child: Wrap(
+                    direction: Axis.horizontal,
+                    spacing: 10,
+                    runSpacing: 15,
+                    alignment: WrapAlignment.center,
+                    runAlignment: WrapAlignment.center,
+                    verticalDirection: VerticalDirection.up,
+                    textDirection: TextDirection.rtl,
+                    children: [
+                      Container(
+                        color: Colors.green,
+                        width: 50,
+                        height: 50,
+                      ),
+                      Container(
+                        color: Colors.yellow,
+                        width: 50,
+                        height: 50,
+                      ),
+                      Container(
+                        color: Colors.yellow,
+                        width: 50,
+                        height: 50,
+                      ),
+                      Container(
+                        color: Colors.yellow,
+                        width: 50,
+                        height: 50,
+                      )
+                    ],
+                  ),
+                ))
+              ],
+            ),
+            Row(
+              children: [
+                Stack(
+                  alignment: Alignment.bottomRight,
+                  children: [
+                    Container(
+                      color: Colors.red,
+                      padding: EdgeInsets.all(60),
+                    ),
+                    Container(
+                      color: Colors.blue,
+                      padding: EdgeInsets.all(40),
+                    ),
+                    Container(
+                      color: Colors.green,
+                      padding: EdgeInsets.all(20),
+                    ),
+                    Positioned(
+                      right: -25,
+                      top: 10,
+                      bottom: 10,
+                      child: Container(
+                        color: Colors.yellow,
+                        padding: EdgeInsets.all(20),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -37,7 +117,34 @@ class FlutterTutorialApp extends StatelessWidget {
                   color: Colors.pink,
                   padding: EdgeInsets.all(50),
                   child: Text("3"),
-                ),
+                )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                    flex: 1,
+                    child: Container(
+                      color: Colors.blue,
+                      padding: EdgeInsets.all(30),
+                      child: Text("1"),
+                    )),
+                Expanded(
+                    flex: 2,
+                    child: Container(
+                      color: Colors.yellow,
+                      padding: EdgeInsets.all(40),
+                      child: Text("2"),
+                    )),
+                Expanded(
+                    flex: 1,
+                    child: Container(
+                      color: Colors.pink,
+                      padding: EdgeInsets.all(50),
+                      child: Text("3"),
+                    ))
               ],
             ),
           ],
