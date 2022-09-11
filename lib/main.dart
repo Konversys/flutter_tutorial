@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 
-void main() => runApp(const FlutterTutorialApp());
+void main() => runApp(FlutterTutorialApp());
 
 class FlutterTutorialApp extends StatelessWidget {
-  const FlutterTutorialApp({super.key});
+  final List<String> events = ["event1", "event2", "event3"];
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,25 @@ class FlutterTutorialApp extends StatelessWidget {
               ],
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                SizedBox(
+                  height: 100,
+                  width: 200,
+                  child: ListView.separated(
+                    itemCount: events.length,
+                    itemBuilder: (_, index) => Text(
+                      events[index],
+                      style: TextStyle(fontSize: 52, color: Colors.black),
+                    ),
+                    separatorBuilder: (_, index) =>
+                        Divider(color: Colors.red, thickness: 2),
+                    physics: BouncingScrollPhysics(),
+                    controller: ScrollController(initialScrollOffset: 50),
+                    reverse: false,
+                    scrollDirection: Axis.vertical,
+                  ),
+                ),
                 Center(
                     child: Container(
                   color: Colors.blue,
