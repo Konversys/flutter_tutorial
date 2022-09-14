@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/event.dart';
-import 'package:intl/intl.dart';
 
 void main() => runApp(FlutterTutorialApp());
 
@@ -48,27 +47,24 @@ class FlutterTutorialApp extends StatelessWidget {
                     itemBuilder: (_, index) => Card(
                         color: Colors.red,
                         margin: EdgeInsets.symmetric(vertical: 3),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                         elevation: 5,
-                        child: Column(
-                          children: [
-                            Text(
-                              events[index].name,
-                              style:
-                                  TextStyle(fontSize: 12, color: Colors.black),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(events[index].location),
-                                Container(
-                                  margin: EdgeInsets.only(left: 10),
-                                  child: Text(
-                                    DateFormat('yyyy-MM-dd').format(events[index].startDateTime)),
-                                )
-                              ],
-                            )
-                          ],
+                        child: ListTile(
+                          title: Text(events[index].name),
+                          subtitle: Text(
+                              "${events[index].location} ${events[index].startDateTime.year}"),
+                          leading: Icon(
+                            Icons.local_activity,
+                            size: 20,
+                            color: Colors.blue,
+                          ),
+                          trailing: IconButton(
+                            icon: Icon(Icons.edit),
+                            onPressed: () => print("${events[index].name} onPressed"),
+                          ),
+                          onTap: () => print("${events[index].name} tap"),
+                          onLongPress: () => print("${events[index].name} LongPress"),
+                          enabled: true,
+                          selected: true,
                         )),
                     physics: BouncingScrollPhysics(),
                     controller: ScrollController(initialScrollOffset: 50),
@@ -88,7 +84,6 @@ class FlutterTutorialApp extends StatelessWidget {
                     alignment: WrapAlignment.center,
                     runAlignment: WrapAlignment.center,
                     verticalDirection: VerticalDirection.up,
-                    textDirection: TextDirection.rtl,
                     children: [
                       Container(
                         color: Colors.green,
