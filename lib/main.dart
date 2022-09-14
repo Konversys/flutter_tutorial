@@ -1,11 +1,20 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/event.dart';
+import 'package:intl/intl.dart';
 
 void main() => runApp(FlutterTutorialApp());
 
 class FlutterTutorialApp extends StatelessWidget {
-  final List<String> events = ["event1", "event2", "event3"];
+  final List<Event> events = [
+    Event(
+        name: "Event 1", location: "Location 1", startDateTime: DateTime.now()),
+    Event(
+        name: "Event 2", location: "Location 2", startDateTime: DateTime.now()),
+    Event(
+        name: "Event 3", location: "Location 3", startDateTime: DateTime.now()),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +42,34 @@ class FlutterTutorialApp extends StatelessWidget {
               children: [
                 SizedBox(
                   height: 100,
-                  width: 200,
-                  child: ListView.separated(
+                  width: 250,
+                  child: ListView.builder(
                     itemCount: events.length,
-                    itemBuilder: (_, index) => Text(
-                      events[index],
-                      style: TextStyle(fontSize: 52, color: Colors.black),
-                    ),
-                    separatorBuilder: (_, index) =>
-                        Divider(color: Colors.red, thickness: 2),
+                    itemBuilder: (_, index) => Card(
+                        color: Colors.red,
+                        margin: EdgeInsets.symmetric(vertical: 3),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                        elevation: 5,
+                        child: Column(
+                          children: [
+                            Text(
+                              events[index].name,
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.black),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(events[index].location),
+                                Container(
+                                  margin: EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    DateFormat('yyyy-MM-dd').format(events[index].startDateTime)),
+                                )
+                              ],
+                            )
+                          ],
+                        )),
                     physics: BouncingScrollPhysics(),
                     controller: ScrollController(initialScrollOffset: 50),
                     reverse: false,
